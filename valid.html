@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+        $(document).ready(function() {
+  $('#myForm').submit(function(e) {
+    e.preventDefault(); // prevent form from submitting
+    
+    // validate name
+    var name = $('#name').val();
+    if (name.length < 1) {
+      alert('Please enter your name.');
+      return;
+    }
+        // validate password
+    var password = $('#password').val();
+    if (password.length < 6) {
+      alert('Please enter a password that is at least 6 characters long.');
+      return;
+    }
+        // validate phone number
+    var phone = $('#phone').val();
+    var phoneRegex = /^\d{10}$/; // regex for 10-digit phone number
+    if (!phoneRegex.test(phone)) {
+      alert('Please enter a valid 10-digit phone number.');
+      return;
+    }
+        // validate email
+    var email = $('#email').val();
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // regex for email
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+    
+    // validate address
+    var address = $('#address').val();
+    if (address.length < 1) {
+      alert('Please enter your address.');
+      return;
+    }
+    
+    // if all validations pass, submit the form
+    alert('Form submitted successfully.');
+    $('#myForm')[0].reset();
+  });
+});
+
+      </script>
+    <form id="myForm" action="" method="post">
+        <h1>Validation Form</h1><br><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone"><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        
+        <label for="address">Address:</label>
+        <textarea id="address" name="address"></textarea><br><br>
+        <input type="submit" value="Submit">
+      </form> 
+</body>
+</html>
